@@ -16,7 +16,8 @@ void setup()
   softSerial.begin(SPEED);
   Serial.println("Serial bridge initialzed!");
   char buffer[25];
-  sprintf(buffer, "RX=%i TX=%i SPEED=%i", RX, TX, SPEED);
+  sprintf(buffer, "RX=%i TX=%i SPEED=%i\n", RX, TX, SPEED);
+  Serial.println("Ready!");
   Serial.print(buffer);
 
   delay(500);
@@ -28,11 +29,15 @@ void loop()
 
   if (Serial.available())
   {
+    digitalWrite(LED_BUILTIN, HIGH);
     softSerial.write(Serial.read());
+    digitalWrite(LED_BUILTIN, LOW);
   }
 
   if (softSerial.available())
   {
+    digitalWrite(LED_BUILTIN, HIGH);
     Serial.write(softSerial.read());
+    digitalWrite(LED_BUILTIN, LOW);
   }
 }
