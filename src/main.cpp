@@ -17,8 +17,8 @@ void setup()
   Serial.println("Serial bridge initialzed!");
   char buffer[25];
   sprintf(buffer, "RX=%i TX=%i SPEED=%i\n", RX, TX, SPEED);
-  Serial.println("Ready!");
   Serial.print(buffer);
+  Serial.println("Device ready!");
 
   delay(500);
   digitalWrite(LED_BUILTIN, LOW);
